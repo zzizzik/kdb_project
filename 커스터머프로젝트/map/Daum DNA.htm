@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0049)http://dna.daum.net/examples/maps/MissA/step1.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript" src="./Daum DNA_files/maps3.js"></script><script type="text/javascript" src="./Daum DNA_files/maps3.48.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="./Daum DNA_files/missA.css">
+<script type="text/javascript" src="./Daum DNA_files/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="./Daum DNA_files/missa_main.js"></script>
+<title>Daum DNA</title>
+<script type="text/javascript" defer="defer">
+
+window.onload = function(){
+	var position = new daum.maps.LatLng(37.537123, 127.005523); 
+	map = new daum.maps.Map(document.getElementById('map'), { 
+		center: position, 
+		level: 4, 
+		mapTypeId: daum.maps.MapTypeId.ROADMAP 
+	});
+	var zoomControl = new daum.maps.ZoomControl();
+	map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+	var mapTypeControl = new daum.maps.MapTypeControl();
+	map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+
+	daum.maps.event.addListener(map, "click", function(MouseEvent){
+		var latLng = MouseEvent.latLng;
+		var latitude = latLng.getLat();
+		var longitude = latLng.getLng();
+
+		if(mark != null)
+			mark.setVisible(false);
+		mark = new daum.maps.Marker({
+			position : new daum.maps.LatLng(latitude, longitude) 
+		});
+
+		if(marker != null)
+			marker.setVisible(false);
+		
+		mark.setMap(map);
+		
+		if(confirm("클릭하신 곳을 중심으로 지정하시겠습니까?")){
+			document.mapFrm.latitude.value = latitude;
+			document.mapFrm.longitude.value = longitude;
+			alert("다음 단계로 넘어 가시려면 '다음'을 눌러주십시오.");
+		}else{
+			mark.setVisible(false);
+
+			var lat = document.getElementById("latitude").value;
+			var lng = document.getElementById("longitude").value;
+
+			var po;
+			if(lat == "" || lng == ""){
+				po = new daum.maps.LatLng(37.537123, 127.005523);
+			}
+			else{
+				po = new daum.maps.LatLng(lat, lng);
+				mark = new daum.maps.Marker({
+					position : po 
+				});
+				mark.setMap(map); 
+			}
+			map.setCenter(po);
+			return;
+		}
+	});	
+};
+function gotoNextStep(form){
+	if(document.getElementById("latitude").value == "" ||
+	   document.getElementById("longitude").value == ""){
+		alert("위치를 선택해 주십시오.");
+		return;
+	}
+	form.submit();
+}
+</script>
+<script type="text/javascript" charset="utf-8" src="./Daum DNA_files/addr2coord"></script></head>
+<body>
+<form action="http://dna.daum.net/examples/maps/MissA/step2.php" method="post" name="mapFrm" onsubmit="return false;">
+<input type="hidden" id="latitude" name="latitude" value="37.654376224414605">
+<input type="hidden" id="longitude" name="longitude" value="127.05632169577596">
+<div id="wrap">
+	<div id="header"><div class="mapText">약도 만들기 도구 - 위치선택 (1/3)</div></div>
+	<div id="body">
+		<div id="search">
+			<div id="searchTop">
+				<div id="searchFrm"><input type="text" id="q" value="주소검색" class="focusInput" onfocus="javascript:setInputLayout(&#39;q&#39;);" onkeydown="javascript:if(event.keyCode == 13) searchPosition(&#39;q&#39;);"></div>
+				<div id="searchBtn"><a href="javascript:searchPosition('q');"><img src="./Daum DNA_files/btn_search.gif"></a></div>
+			</div>
+			
+			<div id="searchBody">
+				<div id="searchList">
+					<div id="searchResultH" class="underLine"><span class="addrResultH">주소검색 -<span class="redNum"> 1</span>건</span></div>
+					<div id="searchResultB"><div class="addrResult"><a href="javascript:searchMark(37.654376224414605,127.05632169577596)">서울 노원구</a></div></div>
+				</div>
+			</div>
+		</div>
+		<div id="mapView">
+			<div id="mapHeader"><span class="boldHeaderFont">1단계:: 위치선택</span></div>
+			<div id="mapPanel">
+				<div id="map" style="position: relative; overflow: hidden; background-image: url(http://i1.daumcdn.net/dmaps/apis/loading_n.png); background-position: initial initial; background-repeat: initial initial;"><div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; cursor: url(http://i1.daumcdn.net/dmaps/apis/cursor/openhand.cur.ico) 7 5, url(http://i1.daumcdn.net/dmaps/apis/cursor/openhand.cur.ico), default;"><div style="position: absolute; left: -2241px; top: 6507px;"><div style="position: absolute; z-index: 0;"></div><div style="position: absolute; z-index: 1; left: 0px; top: 0px;"><img src="./Daum DNA_files/457.png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2018px; top: -6078px; width: 256px; height: 256px;"><img src="./Daum DNA_files/458.png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2274px; top: -6078px; width: 256px; height: 256px;"><img src="./Daum DNA_files/459.png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2530px; top: -6078px; width: 256px; height: 256px;"><img src="./Daum DNA_files/460.png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2786px; top: -6078px; width: 256px; height: 256px;"><img src="./Daum DNA_files/457(1).png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2018px; top: -6334px; width: 256px; height: 256px;"><img src="./Daum DNA_files/458(1).png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2274px; top: -6334px; width: 256px; height: 256px;"><img src="./Daum DNA_files/459(1).png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2530px; top: -6334px; width: 256px; height: 256px;"><img src="./Daum DNA_files/460(1).png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2786px; top: -6334px; width: 256px; height: 256px;"><img src="./Daum DNA_files/457(2).png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2018px; top: -6590px; width: 256px; height: 256px;"><img src="./Daum DNA_files/458(2).png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2274px; top: -6590px; width: 256px; height: 256px;"><img src="./Daum DNA_files/459(2).png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2530px; top: -6590px; width: 256px; height: 256px;"><img src="./Daum DNA_files/460(2).png" alt="" style="position: absolute; -webkit-user-select: none; -webkit-user-drag: none; min-width: 0px; min-height: 0px; max-width: none; max-height: none; left: 2786px; top: -6590px; width: 256px; height: 256px;"></div><div style="position: absolute; z-index: 1;"></div><div style="position: absolute; z-index: 1; width: 100%; height: 0px;"><div style="position: absolute; margin: -34px 0px 0px -13px; z-index: 0; left: 2511px; top: -6290px;"><img src="./Daum DNA_files/n_local_blit_04.png" style="min-width: 0px; min-height: 0px; max-width: 99999px; max-height: none; border: 0px; display: block; position: absolute; -webkit-user-select: none; -webkit-user-drag: none; clip: rect(0px 31px 35px 0px); top: 0px; left: 0px; width: 31px; height: 35px;"><img src="./Daum DNA_files/transparent.gif" usemap="#daum.maps.Marker.Area:1" style="min-width: 0px; min-height: 0px; max-width: 99999px; max-height: none; border: 0px; display: block; position: absolute; -webkit-user-select: none; -webkit-user-drag: none; width: 31px; height: 35px;"><map id="daum.maps.Marker.Area:1" name="daum.maps.Marker.Area:1"><area href="javascript:void(0)" shape="poly" coords="16,0,20,2,24,6,26,10,26,16,23,22,17,25,14,35,13,35,9,25,6,24,2,20,0,16,0,10,2,6,6,2,10,0" title="" style="-webkit-tap-highlight-color: transparent;"></map></div></div></div></div><div style="position: absolute; z-index: 1; white-space: nowrap; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-family: tahoma, sans-serif; color: rgb(85, 85, 85); left: 7px; bottom: 5px;"><a target="_blank" href="http://map.daum.net/" title="Daum 지도로 보시려면 클릭하세요." style="float: left; width: 38px; height: 17px; cursor: pointer; background-image: url(http://i1.daumcdn.net/localimg/localimages/07/2013/img/m_logo.png); background-position: initial initial; background-repeat: no-repeat no-repeat;"></a><div style="color: rgb(0, 0, 0); text-align: center; font-size: 10px; margin: 0px 8px 0px 2px; float: left; width: 52px;"><div style="color: rgb(0, 0, 0);">100m</div><div style="position: relative; overflow: hidden; height: 8px; margin-top: -4px;"><div style="position: absolute; width: 164px; height: 40px; background-image: url(http://i1.daumcdn.net/localimg/localimages/07/2013/img/re_bar.png); top: 0px; left: -82px; background-position: initial initial; background-repeat: no-repeat no-repeat;"></div></div></div><div style="display: inline-block; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-family: Dotum, 돋움, sans-serif; margin: 3px 0px 0px 1px;"><span style="float: left; width: 11px; height: 10px; margin: 1px 1px 0px 0px; background-image: url(http://i1.daumcdn.net/localimg/localimages/07/2013/img/m_copy.png); background-position: initial initial; background-repeat: no-repeat no-repeat;"></span>Daum<span></span></div></div><div style="cursor: auto; position: absolute; z-index: 2; left: 0px; top: 0px;"><div style="width: 22px; height: 185px; position: absolute; left: 515px; top: 37px;"><div style="float: left; cursor: pointer; width: 20px; height: 20px; -webkit-user-select: none; -webkit-user-drag: none; background-image: url(http://i1.daumcdn.net/dmaps/apis/sprites.png); background-position: -30px 0px; background-repeat: no-repeat no-repeat;"></div><div style="cursor: pointer; float: left; width: 18px; height: 143px; background-image: url(http://i1.daumcdn.net/dmaps/apis/sprites.png); background-position: -330px -20px; background-repeat: initial initial;"><div style="display: none; position: absolute; margin: 0px 0px 0px -30px; width: 29px; height: 145px; background-image: url(http://i1.daumcdn.net/dmaps/apis/sprites.png); background-position: 0px -20px; background-repeat: initial initial;"></div><div style="cursor: row-resize; overflow: hidden; position: absolute; margin: 33.07692307692308px 0px 0px; width: 18px; height: 11px; background-image: url(http://i1.daumcdn.net/dmaps/apis/sprites.png); background-position: -30px -77px; background-repeat: initial initial;"></div><div style="background-image: url(http://i1.daumcdn.net/dmaps/apis/sprites.png); width: 18px; height: 33.07692307692308px; background-position: -270px -20px;"></div></div><div style="float: left; cursor: pointer; width: 20px; height: 22px; -webkit-user-select: none; -webkit-user-drag: none; background-image: url(http://i1.daumcdn.net/dmaps/apis/sprites.png); background-position: -30px -163px; background-repeat: no-repeat no-repeat;"></div></div><div style="width: 90px; height: 31px; position: absolute; left: 447px; top: 3px;"><div style="float: left; cursor: default; width: 39px; height: 26px; -webkit-user-select: none; -webkit-user-drag: none; background-image: url(http://i1.daumcdn.net/dmaps/apis/sprites.png); position: absolute; left: 0px; top: 0px; background-position: -400px 0px; background-repeat: no-repeat no-repeat;"></div><div style="float: left; cursor: pointer; width: 53px; height: 26px; -webkit-user-select: none; -webkit-user-drag: none; background-image: url(http://i1.daumcdn.net/dmaps/apis/sprites.png); position: absolute; left: 39px; top: 0px; background-position: -439px 0px; background-repeat: no-repeat no-repeat;"></div></div></div></div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div id="nextBtn"><a href="javascript:gotoNextStep(document.mapFrm);"><img src="./Daum DNA_files/btn_next.gif"></a></div>
+		<div id="closeBtn"><a href="javascript:self.close();"><img src="./Daum DNA_files/btn_close.gif"></a></div>
+	</div>
+</div>
+</form>
+
+
+</body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<title>Daum 지도 API v3 예제: 기본 중심점 이동하기</title> 
+<script type="text/javascript" src="./js/jquery-1.4.2.min"></script>
+<script type="text/javascript" src="./js/maps3.48"></script>
+<script type="text/javascript" src="./js/maps3.js"></script>
+<script type="text/javascript" src="./js/missa_main.js"></script>
+
+<script type="text/javascript"> 
+	var map;	//지도 위치
+	var marker;	//표시할 마커
+	var infoWindow;	//인포메시지창
+	var user_position; // 사용자가 클릭한 곳 위치 
+	function init() {
+		map = new daum.maps.Map(document.getElementById('map'), {
+			center: new daum.maps.LatLng(37.537123, 127.005523),
+			level: 4
+		});		
+		
+		var zoomControl = new daum.maps.ZoomControl();
+		map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+		var mapTypeControl = new daum.maps.MapTypeControl();
+
+		//info 미리 생성
+		// infowindow_click = new daum.maps.InfoWindow({ 
+		// 		content: "userNick_만남의광장"
+		// });
+			
+		daum.maps.event.addListener(map, "click", function(MouseEvent){
+			var latLng = MouseEvent.latLng;		//마우스 클리그이 위도 경도
+			var latitude = latLng.getLat();		//위도
+			var longitude = latLng.getLng();	//경도
+			
+
+			if(marker != null){
+				marker.setVisible(false);
+			}
+
+
+			
+			user_position = new daum.maps.LatLng(latitude, longitude);
+			 marker = new daum.maps.Marker({
+				position : user_position
+			});
+			marker.setMap(map);	//지도에 마커 표시
+
+			daum.maps.event.addListener(marker,"mouseover",function(){ 
+								
+				infoWindow.open(map,this); 
+			});
+			daum.maps.event.addListener(marker,"mouseout",function(){ 
+				infoWindow.close();
+			});
+
+			//db에 저장할 경도 위도
+			document.getElementById('ulat').value = latitude;
+			document.getElementById('ulng').value = longitude;
+		});	
+
+		
+
+		
+	}
+
+	function setCenter() {
+		map.setCenter(new daum.maps.LatLng(37.53723910162246, 127.003362714821));
+	}
+
+	function panTo() {
+		map.panTo(new daum.maps.LatLng(37.53730198471141, 127.00744728571883));
+	}
+
+	//사용자가 입력한내용 info로 출력
+	function overLayContents(e){
+		if(marker!=null){
+			if(infoWindow != null){
+			infoWindow.close();
+			//infoWindow = null;
+			}
+			var text = "<span style=color:blue;font-size:12px;>"+e.value.split("\n").join("<br/>")+"</span>";
+			infoWindow = new daum.maps.InfoWindow({
+				position : user_position,
+				content : text,				
+				removable : false
+			});
+			infoWindow.open(map, marker);
+		}
+	}
+</script> 
+</head> 
+<body onload="init()"> 
+	<!-- 주소검색 -->
+	<div id="search">
+			<div id="searchTop">
+				<div id="searchFrm"><input type="text" id="q" value="주소검색" class="focusInput" onfocus="javascript:setInputLayout(&#39;q&#39;);" onkeydown="javascript:if(event.keyCode == 13) searchPosition(q);"></div>
+				<div id="searchBtn"><a href="javascript:searchPosition(q);"><img src="./js/btn_search.gif"></a></div>
+			</div>
+			
+			<div id="searchBody">
+				<div id="searchList">
+					<div id="searchResultH" class="underLine"><span class="addrResultH">주소검색 -<span class="redNum"> 1</span>건</span></div>
+					<div id="searchResultB"><div class="addrResult"><a href="javascript:searchMark(37.654376224414605,127.05632169577596)">서울 노원구</a></div></div>
+				</div>
+			</div>
+		</div>
+	<!--// 주소검색 끝 //-->
+
+
+	<div id="map" style="width:800px;height:500px;"></div>
+	<form>
+
+		<button type="button" onclick="setCenter()">중심점 이동하기</button>
+
+		<button type="button" onclick="panTo()">중심점 부드럽게 이동하기</button>
+		<input id="ulat" type="text" value="" />
+		<input id="ulng" type="text" value="" />
+		<br />
+		<div id="inputContents">
+			<span style=color:red;font-size:10px;>설명 쓰세요 </span>
+			<textarea style="width: 200px; height: 100px;" name="contents" id="contents" class="contentsForm" onkeyup="javascript:overLayContents(this);"></textarea>
+		</div>
+
+
+	</form> 
+</body> 
+</html> 
+
+

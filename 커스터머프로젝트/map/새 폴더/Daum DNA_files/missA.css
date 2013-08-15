@@ -1,0 +1,82 @@
+* {font-size:9pt;font-family:font-family:,,Arial,Verdana;padding: 0;	margin:0;border:0;}
+body {background-color: white;}
+a {text-decoration: none;}
+ul li {	list-style: none;}
+#wrap{margin:0 auto;width : 800px;height: 570px;border:1px solid #dddddd;text-align: left;background-color: #484848;}
+#header {height:20px;margin-bottom:5px;position:relative;width:778px;vertical-align: bottom;}
+#body {clear: both;margin-left:10px;float: left; height:490px; width: 780px; background-color: #f4f4f4;}
+#search {float: left; height:490px; width: 220px}
+#searchTop{float: left;margin: 5px 0px 0px 5px;width: 210px;height: 80px;border: 1px solid #cdcdcd;}
+#searchFrm{clear:both;float:left;width:150px;margin: 4px;}
+#searchBtn{float: right;margin: 4px;width: 41px;border: 0;}
+#searchBody{float: left;margin: 0 0px 5px 5px;width: 210px;height: 396px;border: 1px solid #cdcdcd;border-top-style: none;background-color: #ffffff;}
+#roadViewBody{float: left;margin: 0 0px 5px -1px;width: 210px;height: 447px;border: 1px solid #cdcdcd;border-top-style: none;background-color: #f4f4f4;}
+#searchList{padding-left: 4px;padding-top: 4px;}
+#preViewBtn {width:100px; height:48px; margin:0 auto;margin-top:10px}
+#mapView { float: right;height:477px;width: 550px;border:1px solid #cdcdcd;margin-top: 5px;margin-right: 5px;}
+#codeView {float:left;height:477px; width:767px;border:1px solid #cdcdcd;margin:5px;}
+#codeBody {float:left;height:446px; width:767px; border:1px solid #cdcdcd;margin-left: -1px;margin-top: -1px;}
+#roadView {clear:both;width:540px;height: 436px;margin: 0 auto;}
+#codeContents {margin-top:6px;margin-left:5px; width:755px; height:433px; border:1px solid #cdcdcd;background-color: #ffffff;}
+#mapHeader{width: 530px;height: 10px;border-bottom: 1px solid #cdcdcd;padding: 10px;}
+#codeHeader{width:748px;height:10px;border-bottom: 1px solid #cdcdcd;padding: 10px;}
+#mapPanel{width:550;height: 434px;background-color: #ffffff;padding: 6px;}
+#rv {margin:0 auto;}
+#rvHeader{height:28px;background-color: #f8f8f8f; border:1px solid #bbbbbb;margin-bottom: 1px;display:none;}
+#rvClose{width:30px;height:28px;float:right;background-image: url("../img/btn_rv_close.gif");cursor: pointer;display:none;}
+#rvAddr {height:28px;float:left;margin-top: 5px; margin-left: 8px;}
+#preBtn{margin-left:60px;margin-top: 10px}
+#code {clear:both;width:675px; margin-left:20px;margin-right:20px;margin-top: 20px;border:1px solid #cdcdcd;padding-top: 20px;padding-bottom: 20px;padding-left:20px;padding-right:20px;background-color: #f4f4f4;}
+#realCode {width:655px;height:100%;word-break:break-all;}
+#codeHdTxt {font-size: 15pt; font-weight: bold;margin-top: 20px; margin-left: 20px;}
+#codeTxt {margin-left: 20px; margin-top: 20px;}
+#map{clear:both;width:540px;height: 436px;margin: 0 auto;}
+#footer {float: left;height:50px;width:100%;}
+#nextBtn{clear:both;margin:0 auto;vertical-align:middle;width:120px;height:26px;margin-top: 11px;}
+#closeBtn {clear:auto;float:right;width:40px;height:18px;padding-top: 0px;margin-top : -25px;margin-right:7px;}
+#searchResultH{margin:0 auto;width:170px;height:20px;margin-top: 10px;padding-bottom: 4px;color: #666666;font-weight: bold;font-size: 10pt;}
+#searchResultB {margin:0 auto;padding-top:5px;width:190px;height:310px;color: #666666;overflow: auto;}
+#step2LeftTop{float: left;margin: 5px 0px 0px 5px;width: 210px;height: 30px;border: 1px solid #cdcdcd;}
+#step2LeftBody{loat: left;width: 210px;height: 447px;background-color: #f4f4f4;border: 1px solid #cdcdcd;margin: 36px 0px 5px 5px;}
+html*#step2LeftBody{loat: left;width: 210px;height: 447px;background-color: #f4f4f4;border: 1px solid #cdcdcd;margin: -1px 0px 5px 5px;}
+#inputSize{margin: 0 auto;width:200px;height:90px;margin-top:-5px;border: 1px solid #cdcdcd;background-color: #ffffff;}
+html*#inputSize{margin: 0 auto;width:200px;height:100px;margin-top:-5px;border: 1px solid #cdcdcd;background-color: #ffffff;}
+#roadviewAngle{margin: 0 auto;width:200px;height:40px;margin-top:-5px;border: 1px solid #cdcdcd;background-color: #ffffff;}
+#inputContents{margin: 0 auto;width:200px;height:100px;margin-top:-5px;border: 1px solid #cdcdcd;background-color: #ffffff;}
+#inputType{margin: 0 auto;width:140px;height:20px;margin-top:-5px;border: 1px solid #cdcdcd;background-color: #ffffff;padding-top: 5px;padding-left: 30px;padding-right: 30px;}
+#mapType1 {width:50px;float:left;}
+#mapType2 {width:50px;float:right;}
+#zoom {width:200px;height:50px;border: 1px solid #cdcdcd;background-color: #ffffff;margin:0 auto;margin-top:-5px;}
+#daumBi{margin:0 auto;padding-top: 13px}
+#daumBiImg{float:right;}
+.impTxt {color: #ff6532;font-size: 18pt;}
+.valText {width:180px;margin-left:10px;}
+.val2Text {width:180px;margin-top:5px;margin-bottom:5px;margin-left:10px;}
+#zoomType {width:150px;height:25px;margin-top:5px;margin-left:10px; }
+.selectType{width:150px;height:20px;border:1px solid #cdcdcd;}
+.contentsForm{width:200px;height:100px;}
+.addrResult{margin:0 auto;width:170px;border-bottom: 1px solid #f0f0f0;padding-top: 5px;padding-bottom: 5px;}
+.underLine {border-bottom: 1px solid #f0f0f0;}
+.mapText{color: white;font-size: 9pt;font-weight:bold;margin-left:10px;margin-top:10px;margin-bottom: -3px;}
+.inputBox{border:1px solid #BABABA;height:16px;margin-right:4px;padding-top:2px;width:149px;color: #dddddd;}
+.boldFont{font-weight: bold;color: #666666;}
+.addrResultH{font-size: 9pt;font-color: #333333;font-weight: normal;padding-top: 3px;}
+.redNum{color:#ff6633;}
+.focusInput{border:1px solid #BABABA;height:16px;margin-right:4px;padding-top:2px;width:149px;color:#666666;}
+.sizeForm {border:1px solid #BABABA;height:16px;margin-right:4px;padding-top:2px;width:100px;color: #666666;}
+.boldHeaderFont{padding:10px;padding-top:10px;margin:0 auto;font-weight: bold;color: #666666;}
+.inputList {padding-top: 5px;padding-left:10px;padding-bottom: 5px;}
+.sizeBox {border:1px solid #BABABA;height:16px;margin-right:4px;padding-top:2px;width:100px;color: #dddddd;}
+#backgroundPopup{display:none;position:fixed;_position:absolute;height:100%;width:100%;top:0;left:0;background:#000000;	border:1px solid #cecece;z-index:1;z-index:1;}
+#popupContact{position:fixed;_position:absolute;height:0;width:0;background:#FFFFFF;z-index:2;font-size:13px;}
+#preMap{margin: 0 auto;margin-left:5px;margin-top:5px;}
+#popupContactClose{font-size:14px;line-height:14px;right:6px;top:4px;position:absolute;color:#6fa5fd;font-weight:700;display:block;}
+.ft_btn{width:50px;height:30px;}
+#btnRVControl {
+	background: transparent url(../img/APIcontroller.png) -255px -14px;
+	width: 77px;
+	height: 30px;
+	cursor: pointer;
+	margin-top: -5px;
+	margin-left: -13px;	
+}
